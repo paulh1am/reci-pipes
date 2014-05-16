@@ -1,11 +1,9 @@
 <h1> Texts </h1>
 
-<ul>
-<% @account.messages.list({:date_sent => '2014-05-16'}).each do |message| %>
-<li>
-  <%= puts message.body %>
-</li>
+
+<% @account.messages.list({:date_sent => 'Date.today'}).each do |message| %>
+<p>
+  <%= message.body %>
+</p>
 
 <% end %>
-
-</ul>

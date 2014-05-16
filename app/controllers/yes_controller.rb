@@ -5,14 +5,6 @@ class YesController < ApplicationController
 
   skip_before_action :verify_authenticity_token
 
-@account_sid = 'AC6f81bc7b479915a28171410d110c8137'
-
-@auth_token = '9c42e83cdf1c6859ec92e5ed0e724368'
-
-# set up a client
-@client = Twilio::REST::Client.new(@account_sid, @auth_token)
-@account = @client.account 
-
     def sms
 @account_sid = 'AC6f81bc7b479915a28171410d110c8137'
 
@@ -60,7 +52,6 @@ response = Twilio::TwiML::Response.new do |r|
 # set up a client
 @client = Twilio::REST::Client.new(@account_sid, @auth_token)
 @account = @client.account 
-
   end
 
 end
