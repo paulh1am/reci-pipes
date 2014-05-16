@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'yes_sms' => 'yes#index'
 
   get 'yes_sms/send' => 'yes#sms'
+
+  get 'list' => 'yes#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
