@@ -1,0 +1,32 @@
+
+
+17208975111
+Twilio account:
+pshiam@gmail.com    hmpl43
+-SID AC6f81bc7b479915a28171410d110c8137
+-auth 9c42e83cdf1c6859ec92e5ed0e724368
+TEST
+-SID ACa77d3a3b300f10e269cb7f6d7b3a48d9
+-auth eca22fd37a8deda25446de948c2eb481
+
+
+Basic send:
+account_sid = "AC6f81bc7b479915a28171410d110c8137"
+auth_token = "9c42e83cdf1c6859ec92e5ed0e724368"
+@client = Twilio::REST::Client.new account_sid, auth_token
+@message = @client.account.messages.create({:to => "+14134618992",
+      :from => "+17208975111",
+    :body => "Hello there!"})
+
+
+Twillio account key functions:
+TEXT FROM CMND LINE
+curl -X POST https://api.twilio.com/2010-04-01/Accounts/AC6f81bc7b479915a28171410d110c8137/SMS/Messages.json \
+    -u AC6f81bc7b479915a28171410d110c8137:9c42e83cdf1c6859ec92e5ed0e724368 \
+    -d "From=+17208975111" \
+    -d "To=+14134618992" \
+    -d 'Body=Check check it - reci-pipe'
+
+SET an auto reply to a text
+
+user texts to a nmbr (twilio nmbr) and it routes it as a post to my app's route '/process_sms' which generates TWIML and sends to twillio to be sent as an SMS
