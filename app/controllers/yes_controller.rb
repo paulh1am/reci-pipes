@@ -1,12 +1,12 @@
 class YesController < ApplicationController
-  #include Webhookable
+  include Webhookable
 
-  #after_filter :set_header #except or only will keep certain actions as non-xml
+  after_filter :set_header #except or only will keep certain actions as non-xml
 
-  #skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
     def sms
-    twiml = Twilio::TwiML::Response.new do |r|
+    response = Twilio::TwiML::Response.new do |r|
       
       # put the twilio do action here SMS? Exampl:
       #r.Say 'Hey there. Congrats on integrating Twilio into your Rails 4 app.', :voice => 'alice'
@@ -15,7 +15,7 @@ class YesController < ApplicationController
     end
 
     #render_twiml response
-     @twim = twiml.text
+     render_twiml response
   end
 
   def index
