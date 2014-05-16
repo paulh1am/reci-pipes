@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'yes_sms' => 'yes#index'
 
-  post 'yes_sms' => 'yes#sms'
+  get 'yes_sms/send' => 'yes#sms'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
