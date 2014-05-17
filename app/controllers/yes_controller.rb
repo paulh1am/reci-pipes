@@ -15,7 +15,7 @@ class YesController < ApplicationController
 @client = Twilio::REST::Client.new(@account_sid, @auth_token)
 @account = @client.account 
 
-mesg = @account.messages.list({:from => "4134618992", :date_sent => "#{Date.today}"}).first.body.downcase
+mesg = @account.messages.list({:to => "7208975111", :date_sent => "#{Date.today}"}).first.body.downcase
       
     @str = "?"
 
