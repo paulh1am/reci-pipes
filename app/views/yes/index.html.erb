@@ -1,7 +1,7 @@
-<h1> Texts </h1>
+<h1> Todays Texts </h1>
 
 
-<% @account.messages.list({:date_sent => 'Date.today'}).each do |message| %>
+<% @account.messages.list({:date_sent => "#{Date.today}"}).each do |message| %>
 <p>
   <%= message.body %>
 </p>

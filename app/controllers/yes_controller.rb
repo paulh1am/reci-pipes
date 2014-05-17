@@ -6,6 +6,7 @@ class YesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
     def sms
+      require 'date'
 @account_sid = 'AC6f81bc7b479915a28171410d110c8137'
 
 @auth_token = '9c42e83cdf1c6859ec92e5ed0e724368'
@@ -14,7 +15,7 @@ class YesController < ApplicationController
 @client = Twilio::REST::Client.new(@account_sid, @auth_token)
 @account = @client.account 
 
-mesg = @account.messages.list({:from => "4134618992", :date_sent => "Date.today"}).first.body.downcase
+mesg = @account.messages.list({:from => "4134618992", :date_sent => "#{Date.today}"}).first.body.downcase
       
     @str = "?"
 
