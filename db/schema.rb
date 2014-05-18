@@ -11,9 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140518202847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chefs", force: true do |t|
+    t.string   "name"
+    t.string   "phone_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cookbooks", force: true do |t|
+    t.string   "title"
+    t.string   "cover_art_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "chef_id"
+  end
+
+  create_table "recipes", force: true do |t|
+    t.string   "name"
+    t.string   "instructions"
+    t.string   "reci"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "cookbook_id"
+  end
 
 end
