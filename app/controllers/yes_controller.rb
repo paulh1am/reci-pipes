@@ -53,7 +53,6 @@ response = Twilio::TwiML::Response.new do |r|
 # set up a client
 @client = Twilio::REST::Client.new(@account_sid, @auth_token)
 @account = @client.account 
-binding.pry
   end
 
 end
