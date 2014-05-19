@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   put 'chefs/:id' => 'chefs#update'
   get 'chefs/:id' => 'chefs#show'
   delete 'chefs/:id' => 'chefs#destroy'
-
+  
 #bcrypt session
   get 'sessions/new' => 'sessions#new', as: 'log_in'
   post 'sessions' => 'sessions#create'
