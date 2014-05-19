@@ -2,7 +2,7 @@ class ChefsController < ApplicationController
 
 def index
   @chef = current_chef
-  # @chefs = Chef.all
+  @chefs = Chef.all
 
 end
 
@@ -12,23 +12,25 @@ def new
 end
 
 def create
-new_chef = Chef.create( #params.require(:chef).permit(:name))
-    #(params.require(:user).permit(:username))
-    redirect_to "/chefs/#{new_chef.id}"
+new_chef = Chef.create(chef_params)
+#params.require(:chef).permit(:name))
+    
+    redirect_to chefs_path
 end
 
-def edit
+# def edit
 
-@chef = Chef.find(params[:id])
-#form
-end
+# @chef = Chef.find(params[:id])
+# #form
+# end
 
-def update
-edited_chef = Chefs.find(params[:id])
-edited_chef.update(#params.require(:chef).permit(:name))
-#update 
-redirect_to "/chefs/#{edited_chef.id}"
-end
+# def update
+# edited_chef = Chefs.find(params[:id])
+# edited_chef.update(#params.require(:chef).permit(:name))
+# #update 
+# redirect_to "/chefs/#{edited_chef.id}"
+# end
+
  def show
     @chef = Chef.find(params[:id])
     #show me user page
@@ -36,10 +38,11 @@ end
   
   def destroy
     Chef.delete(params[:id])
-    redirect_to '/chefs'
+    redirect_to chefs_path
   end
 private
 def chef_params
-  params.require(:chef).permit(:name, :password, :password_confirmation )
+  params.require(:chef).permit(:name, :phone_numner, :password, :password_confirmation )
+end
 
 end

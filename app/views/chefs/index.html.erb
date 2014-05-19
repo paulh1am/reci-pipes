@@ -1,6 +1,22 @@
 <h2> Hi</h2>
 
-<% if current_user %>
-<%= link_to  %>
+<% if current_chef %>
+<p>
+    <%= current_chef.name %>, Hi!
+  </p>
+<%= link_to "Log-Out", log_out_path, method: :delete  %>
+<% else%>
+  <%= link_to "Log-In", log_in_path %>
+  <%= link_to "Sign-Up", chefs_new_path %>
+<% end %>
 
-  <!-- put a hello mesg -->
+
+<ul>
+  <% @chefs.each do |chef| %>
+    <li>
+      <%= chef.name %>
+    </li>
+  <% end %>
+</ul>
+
+  

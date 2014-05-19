@@ -12,7 +12,7 @@ def current_chef
 end
 
 def authorize
-  redirect_to root_path if current_chef.nil?
+  redirect_to chefs_path if current_chef.nil?
 end
 
 end

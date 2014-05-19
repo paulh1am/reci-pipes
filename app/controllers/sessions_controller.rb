@@ -1,4 +1,4 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
 
   def new
     #go to login form
@@ -7,16 +7,17 @@ class SessionController < ApplicationController
   def create
     chef = Chef.find_by(name: params[:name])
     if chef && chef.authenticate(params[:password])
-      session[:chef_id] = chef_id
-      redirect_to root_path, notice: "signed in as #{chef.name}"
+      session[:chef_id] = chef.id
+      redirect_to chefs_path, notice: "signed in as #{chef.name}"
 
     else
-      redirect_to sessions_new_path, alert: 'log-in failed'
+      redirect_to log_in_path, alert: 'log-in failed'
     end
   end
 
 def destroy
   session[:chef_id] = nil
+  redirect_to log_in_path, notice: "Logged Out"
 end
 
 

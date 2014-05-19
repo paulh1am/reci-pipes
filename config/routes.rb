@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get 'chefs' => 'chefs#index'
   
-  get 'chefs/new' => 'chefs#index'
+  get 'chefs/new' => 'chefs#new'
   post 'chefs' => 'chefs#create'
 
   get 'chefs/:id/edit' => 'chefs#edit'
@@ -19,11 +19,11 @@ Rails.application.routes.draw do
   delete 'chefs/:id' => 'chefs#destroy'
 
 #bcrypt session
-  get 'sessions/new' => 'sessions#new'#, as 'log_in'
+  get 'sessions/new' => 'sessions#new', as: 'log_in'
   post 'sessions' => 'sessions#create'
 
-  get 'sessions/logout' => 'sessions#destroy'
-  #delete 'sessions' => 'sessions#destroy', as 'log_out'
+  #'sessions/logout' => 'sessions#destroy'
+  delete 'sessions' => 'sessions#destroy', as: 'log_out'
   #better way to handle logout route
 
 # yes_sms handles the twilio requests
