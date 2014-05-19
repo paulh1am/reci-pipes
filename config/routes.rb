@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   delete 'sessions' => 'sessions#destroy', as: 'log_out'
   #better way to handle logout route
 
+    get 'profiles' => 'profiles#index'
+
 # yes_sms handles the twilio requests
   get 'yes_sms' => 'yes#index'
 
