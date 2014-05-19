@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
 
 helper_method :current_chef #allows to use in views and other stuff too!
-
+ 
 def current_chef
   Chef.find(session[:chef_id]) if session[:chef_id]
 

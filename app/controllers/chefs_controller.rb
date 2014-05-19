@@ -38,7 +38,8 @@ end
   
   def destroy
     Chef.delete(params[:id])
-    redirect_to chefs_path
+    # redirect_to chefs_path
+    redirect_to log_out_path, method: :delete
   end
 private
 def chef_params
