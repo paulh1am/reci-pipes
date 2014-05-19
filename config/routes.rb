@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
 
-   
+
 
   get 'chefs' => 'chefs#index'
   
@@ -18,6 +18,13 @@ Rails.application.routes.draw do
   get 'chefs/:id' => 'chefs#show'
   delete 'chefs/:id' => 'chefs#destroy'
 
+#bcrypt session
+  get 'sessions/new' => 'sessions#new'#, as 'log_in'
+  post 'sessions' => 'sessions#create'
+
+  get 'sessions/logout' => 'sessions#destroy'
+  #delete 'sessions' => 'sessions#destroy', as 'log_out'
+  #better way to handle logout route
 
 # yes_sms handles the twilio requests
   get 'yes_sms' => 'yes#index'

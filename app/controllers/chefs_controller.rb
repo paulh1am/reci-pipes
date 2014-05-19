@@ -1,27 +1,31 @@
 class ChefsController < ApplicationController
 
 def index
+  @chef = current_chef
+  # @chefs = Chef.all
 
 end
 
 def new
+  @chef = Chef.new #form partial
   #show a form
 end
 
 def create
-new_chef = Chef.create( params.require(:chef).permit(:name))
+new_chef = Chef.create( #params.require(:chef).permit(:name))
     #(params.require(:user).permit(:username))
     redirect_to "/chefs/#{new_chef.id}"
 end
 
 def edit
+
 @chef = Chef.find(params[:id])
 #form
 end
 
 def update
 edited_chef = Chefs.find(params[:id])
-edited_chef.update(params.require(:chef).permit(:name))
+edited_chef.update(#params.require(:chef).permit(:name))
 #update 
 redirect_to "/chefs/#{edited_chef.id}"
 end
@@ -34,6 +38,8 @@ end
     Chef.delete(params[:id])
     redirect_to '/chefs'
   end
-
+private
+def chef_params
+  params.require(:chef).permit(:name, :password, :password_confirmation )
 
 end
