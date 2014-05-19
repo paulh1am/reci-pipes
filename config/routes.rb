@@ -6,6 +6,20 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
 
+   
+
+  get 'chefs' => 'chefs#index'
+  
+  get 'chefs/new' => 'chefs#index'
+  post 'chefs' => 'chefs#create'
+
+  get 'chefs/:id/edit' => 'chefs#edit'
+  put 'chefs/:id' => 'chefs#update'
+  get 'chefs/:id' => 'chefs#show'
+  delete 'chefs/:id' => 'chefs#destroy'
+
+
+# yes_sms handles the twilio requests
   get 'yes_sms' => 'yes#index'
 
   get 'yes_sms/send' => 'yes#sms'
