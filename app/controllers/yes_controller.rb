@@ -15,21 +15,27 @@ class YesController < ApplicationController
 @client = Twilio::REST::Client.new(@account_sid, @auth_token)
 @account = @client.account 
 
-mesg = @account.messages.list({:to => "7208975111"}).first.body.downcase
-      
-    @str = "?"
+@mesg = @account.messages.list({:to => "7208975111"}).first.body.downcase
+@sender = @account.messages.list[0].from
+    
 
-    if mesg.include?('yes')
-      @str = "NO"
-    elsif mesg.include?('no')
-      @str = "YES"
-    elsif mesg.include?('black')
-      @str = "White"
-    elsif mesg.include?('white')
-      @str = "Black"
-    else
-      @str = "what?"
-    end
+
+
+
+#yes_sms test      
+    # @str = "?"
+
+    # if mesg.include?('yes')
+    #   @str = "NO"
+    # elsif mesg.include?('no')
+    #   @str = "YES"
+    # elsif mesg.include?('black')
+    #   @str = "White"
+    # elsif mesg.include?('white')
+    #   @str = "Black"
+    # else
+    #   @str = "what?"
+    # end
       
 
 
@@ -53,6 +59,7 @@ response = Twilio::TwiML::Response.new do |r|
 # set up a client
 @client = Twilio::REST::Client.new(@account_sid, @auth_token)
 @account = @client.account 
+
   end
 
 end

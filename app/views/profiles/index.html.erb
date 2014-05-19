@@ -1,2 +1,8 @@
 <h2><%= current_chef.name %></h2>
 <h3>Only YOU can see this.</h3>
+
+<form action="/chef/<%= @chef.id %>"method='post'>
+  <%= token_tag %>
+  <input type="hidden" name="_method" value="delete">
+  <button type='submit'>Delete My Profile</button>
+</form>

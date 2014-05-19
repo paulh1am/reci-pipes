@@ -1,0 +1,24 @@
+<h1>
+  SHOW
+</h1>
+
+<%= @chef.name %>
+<div class="reci_list">
+<% @chef.recipes.each do |r| %>
+<div>
+<h3>
+  <%= r.name %>
+</h3>
+<h4>from the book:<%= r.cookbook.title %></h4>
+<p>
+  <%= puts r.reci %>
+</p>
+<p>
+  <%= r.instructions %>
+</p> 
+</div>
+<% end %>
+</div>
+<!-- 
+<%= form_tag(chefs_path(@chef.id), method: "delete") %>
+ -->

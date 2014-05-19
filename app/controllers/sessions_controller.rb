@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     chef = Chef.find_by(name: params[:name])
     if chef && chef.authenticate(params[:password])
       session[:chef_id] = chef.id
-      redirect_to chefs_path, notice: "signed in as #{chef.name}"
+      redirect_to profiles_path, notice: "signed in as #{chef.name}"
 
     else
       redirect_to log_in_path, alert: 'log-in failed'
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
 def destroy
   session[:chef_id] = nil
-  redirect_to log_in_path, notice: "Logged Out"
+  redirect_to chefs_path, notice: "Logged Out"
 end
 
 

@@ -15,7 +15,7 @@ def create
 new_chef = Chef.create(chef_params)
 #params.require(:chef).permit(:name))
     
-    redirect_to chefs_path
+redirect_to chefs_path
 end
 
 # def edit
@@ -42,7 +42,7 @@ end
   end
 private
 def chef_params
-  params.require(:chef).permit(:name, :phone_numner, :password, :password_confirmation )
+  params.require(:chef).permit(:name, :phone_number, :password, :password_confirmation )
 end
 
 end
