@@ -1,5 +1,7 @@
 class CookbooksController < ApplicationController
 
+before_action :authorize
+
 def index
   @cookbooks = Cookbook.all
    @chef = Chef.find(params[:chef_id])
@@ -42,6 +44,9 @@ def destroy
     Cookbook.delete(params[:id])
     redirect_to chef_cookbooks_path
   end
+
+
+
 
 
 private

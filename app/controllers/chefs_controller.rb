@@ -1,5 +1,5 @@
 class ChefsController < ApplicationController
-
+before_action :authorize, except: [:index, :show]
 def index
   @chef = current_chef
   @chefs = Chef.all
@@ -41,6 +41,7 @@ end
     # redirect_to chefs_path
     redirect_to log_out_path, method: :delete
   end
+
 private
 def chef_params
   params.require(:chef).permit(:name, :phone_number, :password, :password_confirmation )

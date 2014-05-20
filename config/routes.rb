@@ -6,7 +6,7 @@ resources :chefs do
           resources :recipes
         end
        end
-
+# get 'chefs/pipe' => 'chefs#pipe'
   # get 'chefs' => 'chefs#index'
   
   # get 'chefs/new' => 'chefs#new'
@@ -34,6 +34,9 @@ resources :chefs do
   get 'profiles' => 'profiles#index'
 
 # yes_sms handles the twilio requests
+  get 'yes_sms/pipe' => 'yes#pipe'
+
+
   get 'yes_sms' => 'yes#index'
 
   get 'yes_sms/send' => 'yes#sms'
