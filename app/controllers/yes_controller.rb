@@ -7,6 +7,7 @@ class YesController < ApplicationController
 
     def sms
       require 'date'
+      binding.pry
 @account_sid = ENV.fetch('TWILIO_SID')
 
 
@@ -24,20 +25,20 @@ class YesController < ApplicationController
 
 
 
-#yes_sms test      
-    # @str = "?"
+# yes_sms test      
+    @str = "?"
 
-    # if mesg.include?('yes')
-    #   @str = "NO"
-    # elsif mesg.include?('no')
-    #   @str = "YES"
-    # elsif mesg.include?('black')
-    #   @str = "White"
-    # elsif mesg.include?('white')
-    #   @str = "Black"
-    # else
-    #   @str = "what?"
-    # end
+    if mesg.include?('yes')
+      @str = "NO"
+    elsif mesg.include?('no')
+      @str = "YES"
+    elsif mesg.include?('black')
+      @str = "White"
+    elsif mesg.include?('white')
+      @str = "Black"
+    else
+      @str = "what?"
+    end
       
 
 
