@@ -1,0 +1,17 @@
+recipes
+
+<ul>
+  <% @recipes.each do |recipe| %>
+    <br/>
+  
+      
+     <h3><%= recipe.id %>:  <%= recipe.name %></h3>
+    
+    <li>
+     <%= recipe.reci %>
+    </li>
+    <li>
+     <%= recipe.instructions %>
+    </li>
+  <% end %>
+</ul>

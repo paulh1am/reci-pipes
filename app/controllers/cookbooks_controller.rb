@@ -12,7 +12,7 @@ def new
 end
 def create
   @chef = Chef.find(params[:chef_id])
-  @cookbook = Cookbook.create(book_params)
+  @cookbook = Cookbook.create(cookbook_params)
   #params.require(:chef).permit(:name))
   @chef.cookbooks << @cookbook    
   redirect_to chef_cookbooks_path
@@ -33,19 +33,19 @@ def edit
 end
 def update
   @chef = Chef.find(params[:chef_id])
-  @cookbook = Cookbook.find(params[:cooknook_id])
-  @cookbook.update(cookbook_params)
-  redirect_to "/chefs/#{@chef.id}/cookbooks/#{cookbook.id}"
+  edited_cookbook = Cookbook.find(params[:id])
+  edited_cookbook.update(cookbook_params)
+  redirect_to chef_cookbook_path
 end
 def destroy
    @chef = Chef.find(params[:chef_id])
-    Cookbook.delete(params[:cookbook_id])
-    redirect_to "/chefs/#{@chef.id}/moons"
+    Cookbook.delete(params[:id])
+    redirect_to chef_cookbooks_path
   end
 
 
 private
-def book_params
+def cookbook_params
   params.require(:cookbook).permit(:title, :cover_art_url, :chef_id)
 end
 end

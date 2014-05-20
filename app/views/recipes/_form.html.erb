@@ -1,0 +1,12 @@
+<%= form_for [@chef, @cookbook, @recipe] do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :reci %>
+  <%= f.text_field :reci %>
+   <%= f.label :instructions %>
+  <%= f.text_field :instructions %>
+  
+  <%= f.submit %>
+
+<% end %>

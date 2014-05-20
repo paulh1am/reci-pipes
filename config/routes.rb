@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority
 root "chefs#index"
 resources :chefs do
-       resources :cookbooks
+       resources :cookbooks do
+          resources :recipes
+        end
        end
 
   # get 'chefs' => 'chefs#index'
