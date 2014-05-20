@@ -1,0 +1,14 @@
+<ul>
+  <% @cookbook.recipes.each do |recipe| %>
+    <li>
+      <%= recipe.id %>
+     <h3><%= recipe.name %></h3>
+    </li>
+    <li>
+     <%= recipe.reci %>
+    </li>
+    <li>
+     <%= recipe.instructions %>
+    </li>
+  <% end %>
+</ul>

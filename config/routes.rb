@@ -1,23 +1,26 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  # The priority is based upon order of creation: first created -> highest priority
+root "chefs#index"
+resources :chefs do
+       resources :cookbooks
+       end
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-
-
-
-  get 'chefs' => 'chefs#index'
+  # get 'chefs' => 'chefs#index'
   
-  get 'chefs/new' => 'chefs#new'
-  post 'chefs' => 'chefs#create'
+  # get 'chefs/new' => 'chefs#new'
+  # post 'chefs' => 'chefs#create'
 
-  get 'chefs/:id/edit' => 'chefs#edit'
-  put 'chefs/:id' => 'chefs#update'
-  get 'chefs/:id' => 'chefs#show'
-  delete 'chefs/:id' => 'chefs#destroy'
+  # get 'chefs/:id/edit' => 'chefs#edit'
+  # put 'chefs/:id' => 'chefs#update'
+  # get 'chefs/:id' => 'chefs#show'
+  # delete 'chefs/:id' => 'chefs#destroy'
   
+  
+ 
+   
+ 
+
+
 #bcrypt session
   get 'sessions/new' => 'sessions#new', as: 'log_in'
   post 'sessions' => 'sessions#create'
@@ -34,6 +37,8 @@ Rails.application.routes.draw do
   get 'yes_sms/send' => 'yes#sms'
 
   get 'list' => 'yes#index'
+  
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

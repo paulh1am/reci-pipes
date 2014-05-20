@@ -7,9 +7,11 @@ class YesController < ApplicationController
 
     def sms
       require 'date'
-@account_sid = 'AC6f81bc7b479915a28171410d110c8137'
+@account_sid = ENV.fetch('TWILIO_SID')
 
-@auth_token = '9c42e83cdf1c6859ec92e5ed0e724368'
+
+@auth_token = ENV.fetch('TWILIO_AUTH_TOKEN')
+
 
 # set up a client
 @client = Twilio::REST::Client.new(@account_sid, @auth_token)
@@ -52,9 +54,11 @@ response = Twilio::TwiML::Response.new do |r|
   end
 
   def index
-    @account_sid = 'AC6f81bc7b479915a28171410d110c8137'
+  @account_sid = ENV.fetch('TWILIO_SID')
 
-@auth_token = '9c42e83cdf1c6859ec92e5ed0e724368'
+
+@auth_token = ENV.fetch('TWILIO_AUTH_TOKEN')
+
 
 # set up a client
 @client = Twilio::REST::Client.new(@account_sid, @auth_token)

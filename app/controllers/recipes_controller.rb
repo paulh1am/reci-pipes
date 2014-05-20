@@ -19,26 +19,26 @@ def create
 end
 def edit
   @cookbook = Cookbook.find(params[:cookbook_id])
-  @recipe = Recipe.find(params[:recipe_id])
+  @recipe = Recipe.find(params[:id])
 end
 def show
-  @recipe = Recipe.find(params[:recipe_id])
-  @cookbook = Cookbook.find(params[:cookbook_id])
+  @recipe = Recipe.find(params[:id])
+  @cookbook = Cookbook.find(params[:id])
 end
 def edit
-  @recipe = Recipe.find(params[:recipe_id])
+  @recipe = Recipe.find(params[:id])
   @cookbook = Coobook.find(params[:cookbook_id])
 
 end
 def update
-  @recipe = Recipe.find(params[:recipe_id])
-  @cookbook = Cookbook.find(params[:cooknook_id])
+  @recipe = Recipe.find(params[:id])
+  @cookbook = Cookbook.find(params[:cookbook_id])
   @recipe.update(recipe_params)
   # redirect_to "/chefs/#{@chef.id}/cookbooks/#{cookbook.id}"
 end
 def destroy
    @cookbook = Cookbook.find(params[:cookbook_id])
-    Recipe.delete(params[:recipe_id])
+    Recipe.delete(params[:id])
     # redirect_to "/chefs/#{@chef.id}/moons"
   end
 

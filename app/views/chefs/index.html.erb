@@ -7,14 +7,14 @@
 <%= link_to "Log-Out", log_out_path, method: :delete  %>
 <% else%>
   <%= link_to "Log-In", log_in_path %>
-  <%= link_to "Sign-Up", chefs_new_path %>
+  <%= link_to "Sign-Up", new_chef_path %>
 <% end %>
 
 
 <ul>
   <% @chefs.each do |chef| %>
     <li>
-      <%= chef.name %>
+      <a href="/chefs/<%= chef.id %>"><%= chef.name %></a>
     </li>
   <% end %>
 </ul>

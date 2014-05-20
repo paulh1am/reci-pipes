@@ -2,7 +2,7 @@ class CookbooksController < ApplicationController
 
 def index
   @cookbooks = Cookbook.all
-
+   @chef = Chef.find(params[:chef_id])
 end
 
 def new
@@ -15,19 +15,20 @@ def create
   @cookbook = Cookbook.create(book_params)
   #params.require(:chef).permit(:name))
   @chef.cookbooks << @cookbook    
-  redirect_to "/chefs/#{chef.id}/cookbooks/#{@cookbook.id}"
+  redirect_to chef_cookbooks_path
 end
 def edit
   @chef = Chef.find(params[:chef_id])
   @cookbook = Cookbook.find(params[:cookbook_id])
 end
 def show
-  @cookbook = Cookbook.find(params[:cookbook_id])
+  @cookbook = Cookbook.find(params[:id])
   @chef = Chef.find(params[:chef_id])
+
 end
 def edit
   @chef = Chef.find(params[:chef_id])
-  @cookbook = Coobook.find(params[:cookbook_id])
+  @cookbook = Cookbook.find(params[:id])
 
 end
 def update
