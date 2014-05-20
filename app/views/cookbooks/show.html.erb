@@ -2,8 +2,9 @@
 <ul>
   <% @cookbook.recipes.each do |recipe| %>
     <li>
-      <%= recipe.id %>
+      
      <h3><%= recipe.name %></h3>
+     <%= recipe.id %>
     </li>
     <li>
      <%= recipe.reci %>
@@ -13,3 +14,7 @@
     </li>
   <% end %>
 </ul>
+<form action="/chefs/<%= @chef.id %>/cookbooks/<%= @cookbook.id %>" method='post'>
+  <%= token_tag %>
+  <input type="hidden" name="_method" value="delete">
+  <button type='submit'>Delete Book</button>
