@@ -7,7 +7,7 @@ class YesController < ApplicationController
 
     def sms
       require 'date'
-      binding.pry
+      
 @account_sid = ENV.fetch('TWILIO_SID')
 
 
