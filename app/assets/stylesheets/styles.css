@@ -2,7 +2,10 @@ body {
   background-image: url('/assets/board.jpg');
   background-size: cover;
   background-repeat: none;
-  color: lightyellow;
+  color: limegreen;
+  text-shadow: 2px 2px #FF0099;
+  font-size: 20px;
+  font-weight: bold;
 
 
 }
@@ -10,7 +13,7 @@ a:link {
   color: white;
 }
 a:visited {
-  color: lightgoldenrodyellow;
+  color: black;
 
 }
 a:hover {
