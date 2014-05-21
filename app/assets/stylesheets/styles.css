@@ -1,3 +1,45 @@
 body {
-  background-image: url('/assets/vector_tape.jpg');
+  background-image: url('/assets/board.jpg');
+  background-size: cover;
+  background-repeat: none;
+  color: lightyellow;
+
+
 }
+a:link {
+  color: white;
+}
+a:visited {
+  color: lightgoldenrodyellow;
+
+}
+a:hover {
+  color: lightblue;
+}
+.nav li {
+  list-style-type: none;
+  display: inline-block; 
+}
+.nav .title {
+  margin-right: 75%;
+}
+/* show chef styles */
+#chef-recis {
+  text-align: center;
+  border: 1px dashed blue;
+}
+#recis {
+  margin: 0 auto;
+  margin-top: 8px;
+  background-color: black;
+  border: 1px solid lightyellow;
+  opacity: 0.5;
+  padding: 12px;
+  width: 65%;
+  border-radius: 10px;
+
+}
+
+/* chef profile pg */
+
+

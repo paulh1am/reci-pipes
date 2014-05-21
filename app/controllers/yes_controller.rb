@@ -7,7 +7,8 @@ class YesController < ApplicationController
 
 
 def pipe
-      require 'date'
+  
+  require 'date'
 
 @account_sid = ENV.fetch('TWILIO_SID')
 @auth_token = ENV.fetch('TWILIO_AUTH_TOKEN')
@@ -34,7 +35,7 @@ if @chef
   if @msg.include?("pipe")
     
     @matching_recipes = @chef.recipes.select{ |recipe| @msg.include?(recipe.name)}
-    
+
       if @matching_recipes[0] != nil 
        @pipe = @matching_recipes[0].reci
       else
