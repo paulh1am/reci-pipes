@@ -2,8 +2,8 @@
 <%= @recipe.reci %>
 <%= @recipe.instructions %>
 <br/>
-<a href="<%= edit_chef_cookbook_recipe_path %>">EDIT</a>
-<form action="/chefs/<%= @chef.id %>/cookbooks/<%= @cookbook.id %>/recipes/<%= @recipe.id %>" method='post'>
+<button><a href="<%= edit_chef_cookbook_recipe_path %>">EDIT</a>
+<form action="/chefs/<%= @chef.id %>/cookbooks/<%= @cookbook.id %>/recipes/<%= @recipe.id %>" method='post'></button>
   <%= token_tag %>
   <input type="hidden" name="_method" value="delete">
   <button type='submit'>Destroy</button>

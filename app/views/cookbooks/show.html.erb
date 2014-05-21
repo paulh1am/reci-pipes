@@ -1,9 +1,12 @@
-<img src="<%= @cookbook.cover_art_url %>">
+<img src="<%= @cookbook.cover_art_url %>"><br/>
+<button><%= link_to "New Recipe", new_chef_cookbook_recipe_path(@chef.id, @cookbook.id)  %></button>
+<button><%= link_to "Edit Book", edit_chef_cookbook_path(@chef.id, @cookbook.id)  %></button>
 <ul>
   <% @cookbook.recipes.each do |recipe| %>
     <li>
-      
-     <h3><%= recipe.name %></h3>
+      <h3>
+      <%= link_to recipe.name, chef_cookbook_recipe_path(@chef.id, @cookbook.id, recipe.id)  %>
+     </h3>
      <%= recipe.id %>
     </li>
     <li>

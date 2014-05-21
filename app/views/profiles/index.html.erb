@@ -13,6 +13,7 @@
 <br/>
 <ul class="chefbooks">
   <% @chef.cookbooks.each do |book| %>
+    <li><img src="<%= book.cover_art_url %>" alt=""></li>
     <li>
       <a href="/chefs/<%= @chef.id %>/cookbooks/<%= book.id %>"><%= book.title %></a>
       <ul>

@@ -2,22 +2,23 @@ body {
   background-image: url('/assets/board.jpg');
   background-size: cover;
   background-repeat: none;
-  color: limegreen;
+  color: lightblue;
   text-shadow: 2px 2px #FF0099;
   font-size: 20px;
   font-weight: bold;
+  font-family: impact;
 
 
 }
 a:link {
-  color: white;
+  color: black;
 }
 a:visited {
-  color: black;
+  color: blue;
 
 }
 a:hover {
-  color: lightblue;
+  color: limegreen;
 }
 .nav li {
   list-style-type: none;
