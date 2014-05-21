@@ -1,5 +1,9 @@
 class ChefsController < ApplicationController
+
 before_action :authorize, except: [:index, :new, :show, :create]
+
+
+
 def index
   @chef = current_chef
   @chefs = Chef.all
@@ -12,10 +16,14 @@ def new
 end
 
 def create
-new_chef = Chef.create(chef_params)
+@chef = Chef.create(chef_params)
 #params.require(:chef).permit(:name))
     
-redirect_to chefs_path
+ if @chef.save
+      redirect_to chefs_path
+    else
+      render 'chefs/new'
+    end
 end
 
 def edit
