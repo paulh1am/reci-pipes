@@ -33,8 +33,7 @@ if @chef
   
   if @mesg.include?("pipe")
     
-    matching_recipes = 
-    @chef.recipes.select{ |recipe| @mesg.include?(recipe.name)}
+    matching_recipes = @chef.recipes.select{ |recipe| @mesg.include?(recipe.name)}
     # @chef.recipes.each do |recipe|
     #   if @mesg.include?(recipe.name) #|| @mesg.include?(recipe.id.to_s)
 
