@@ -25,7 +25,7 @@ def edit
 end
 
 def update
-edited_chef = Chefs.find(params[:id])
+edited_chef = Chef.find(params[:id])
 edited_chef.update(params.require(:chef).permit(:name))
 #update 
 redirect_to "/chefs/#{edited_chef.id}"
