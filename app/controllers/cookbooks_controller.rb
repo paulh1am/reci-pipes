@@ -1,6 +1,6 @@
 class CookbooksController < ApplicationController
 
-before_action :authorize
+before_action :authorize, only: [:edit, :create, :destroy]
 
 def index
   @cookbooks = Cookbook.all

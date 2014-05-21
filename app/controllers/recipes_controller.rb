@@ -1,5 +1,8 @@
 class RecipesController < ApplicationController
 
+before_action :authorize, only: [:edit, :new, :create, :destroy]
+
+
 def index
   @recipes = Recipe.all
 
