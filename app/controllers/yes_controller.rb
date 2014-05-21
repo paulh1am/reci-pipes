@@ -6,7 +6,7 @@ class YesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
 
-  def pipe
+def pipe
       require 'date'
 
 @account_sid = ENV.fetch('TWILIO_SID')
@@ -17,34 +17,70 @@ class YesController < ApplicationController
 @client = Twilio::REST::Client.new(@account_sid, @auth_token)
 @account = @client.account 
 
+#assign the incoming message to var
 @mesg = @account.messages.list({:to => "9172424245"}).first.body.downcase
-@sender = @account.messages.list[0].from
-   
-# test      
-    @str = "?"
+#assign the sender to a var
+@sender = @account.messages.list({:to => "9172424245"}).first.from
+@sender.delete!('+')
+@sender[0] = ''
+#see if sender's number matches a chef in db
+@chef = Chef.find_by(phone_number: @sender)
 
-    if @mesg.include?('yes')
-      @str = "NO"
-    elsif @mesg.include?('no')
-      @str = "YES"
-    elsif @mesg.include?('black')
-      @str = "White"
-    elsif mesg.include?('white')
-      @str = "Black"
-    else
-      @str = "what?"
+@pipe = "crumbs"
+#if chef exists read the message
+if @chef
+  case @mesg
+  when @mesg.include?("pipe")
+    @chef.recipes.each do |recipe|
+      if @mesg.include?(recipe.name) || @mesg.include?(recipe.id)
+
+        @pipe = recipe.reci
+      else
+        @pipe = 'not found'
+
+      end
+
     end
       
-
-
-response = Twilio::TwiML::Response.new do |r|
+  end
+  response = Twilio::TwiML::Response.new do |r|
     
-    r.Message "#{@str}"
+    r.Message "#{@pipe}"
     end
 
     #render_twiml response
      render_twiml response
-  end
+else
+
+end
+
+
+
+# test      
+    # @str = "?"
+
+    # if @mesg.include?('yes')
+    #   @str = "NO"
+    # elsif @mesg.include?('no')
+    #   @str = "YES"
+    # elsif @mesg.include?('black')
+    #   @str = "White"
+    # elsif mesg.include?('white')
+    #   @str = "Black"
+    # else
+    #   @str = "what?"
+    # end
+      
+
+
+# response = Twilio::TwiML::Response.new do |r|
+    
+#     r.Message "#{@pipe}"
+#     end
+
+#     #render_twiml response
+#      render_twiml response
+end
 
 
 
