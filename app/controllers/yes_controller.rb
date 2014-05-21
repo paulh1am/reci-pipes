@@ -39,7 +39,7 @@ if @chef
       else
       @pipe = "empty cupboard"
       end
-binding.pry
+
   end
   response = Twilio::TwiML::Response.new do |r|
     
