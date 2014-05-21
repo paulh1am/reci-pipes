@@ -18,7 +18,7 @@ def pipe
 @account = @client.account 
 
 #assign the incoming message to var
-@mesg = @account.messages.list({:to => "9172424245"}).first.body.downcase
+@msg = @account.messages.list({:to => "9172424245"}).first.body.downcase
 #assign the sender to a var
 @sender = @account.messages.list({:to => "9172424245"}).first.from
 @sender.delete!('+')
@@ -31,20 +31,15 @@ def pipe
 if @chef
   @pipe = "crumbs"
   
-  if @mesg.include?("pipe")
+  if @msg.include?("pipe")
     
-    matching_recipes = @chef.recipes.select{ |recipe| @mesg.include?(recipe.name)}
-    # @chef.recipes.each do |recipe|
-    #   if @mesg.include?(recipe.name) #|| @mesg.include?(recipe.id.to_s)
-    #unless matching_recipes[0].nil?
-    @pipe = matching_recipes[0].reci
-    #   else
-    #     @pipe = 'not found'
+    @matching_recipes = @chef.recipes.select{ |recipe| @msg.include?(recipe.name)}
+      if @matching_recipes[0] != nil 
+       @pipe = @matching_recipes[0].reci
+      else
+      @pipe = "empty cupboard"
+      end
 
-    #   end
-      
-    # end
-      
   end
   response = Twilio::TwiML::Response.new do |r|
     
