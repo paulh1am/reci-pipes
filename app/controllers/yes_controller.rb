@@ -37,7 +37,7 @@ if @chef
     @matching_recipes = @chef.recipes.select{ |recipe| @msg.include?(recipe.name)}
 
       if @matching_recipes[0] != nil 
-       @pipe = @matching_recipes[0].reci
+       @pipe = @matching_recipes[0].ingredients
       else
       @pipe = "empty cupboard"
       end
