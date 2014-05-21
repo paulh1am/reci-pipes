@@ -26,21 +26,25 @@ def pipe
 #see if sender's number matches a chef in db
 @chef = Chef.find_by(phone_number: @sender)
 
-@pipe = "crumbs"
+
 #if chef exists read the message
 if @chef
-  case @mesg
-  when @mesg.include?("pipe")
-    @chef.recipes.each do |recipe|
-      if @mesg.include?(recipe.name) || @mesg.include?(recipe.id)
+  @pipe = "crumbs"
+  
+  if @mesg.include?("pipe")
+    
+    matching_recipes = 
+    @chef.recipes.select{ |recipe| @mesg.include?(recipe.name)}
+    # @chef.recipes.each do |recipe|
+    #   if @mesg.include?(recipe.name) #|| @mesg.include?(recipe.id.to_s)
 
-        @pipe = recipe.reci
-      else
-        @pipe = 'not found'
+    @pipe = matching_recipes[0].reci
+    #   else
+    #     @pipe = 'not found'
 
-      end
-
-    end
+    #   end
+      
+    # end
       
   end
   response = Twilio::TwiML::Response.new do |r|
@@ -48,7 +52,7 @@ if @chef
     r.Message "#{@pipe}"
     end
 
-    #render_twiml response
+    #render_twiml response 
      render_twiml response
 else
 
