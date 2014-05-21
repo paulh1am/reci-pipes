@@ -34,6 +34,7 @@ if @chef
   if @msg.include?("pipe")
     
     @matching_recipes = @chef.recipes.select{ |recipe| @msg.include?(recipe.name)}
+
       if @matching_recipes[0] != nil 
        @pipe = @matching_recipes[0].reci
       else
@@ -48,7 +49,7 @@ if @chef
 
     #render_twiml response 
      render_twiml response
-else
+
 
 end
 
