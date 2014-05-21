@@ -1,5 +1,5 @@
 class ChefsController < ApplicationController
-before_action :authorize, except: [:index, :show]
+before_action :authorize, except: [:index, :new, :show]
 def index
   @chef = current_chef
   @chefs = Chef.all
