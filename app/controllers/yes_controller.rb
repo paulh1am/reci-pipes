@@ -36,7 +36,7 @@ if @chef
     matching_recipes = @chef.recipes.select{ |recipe| @mesg.include?(recipe.name)}
     # @chef.recipes.each do |recipe|
     #   if @mesg.include?(recipe.name) #|| @mesg.include?(recipe.id.to_s)
-
+    unless matching_recipes[0].nil?
     @pipe = matching_recipes[0].reci
     #   else
     #     @pipe = 'not found'
