@@ -1,7 +1,14 @@
-<img src="<%= @cookbook.cover_art_url %>" style="width:200px; height:200px"><br/>
-<button><%= link_to "New Recipe", new_chef_cookbook_recipe_path(@chef.id, @cookbook.id)  %></button>
-<button><%= link_to "Edit Book", edit_chef_cookbook_path(@chef.id, @cookbook.id)  %></button>
-<ul>
+ <div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-6">
+    <img src="<%= @cookbook.cover_art_url %>" style="width:200px; height:200px; border-radius:50%">
+    <hr/>
+    <button><%= link_to "New Recipe", new_chef_cookbook_recipe_path(@chef.id, @cookbook.id)  %>
+    </button>
+    <button><%= link_to "Edit Book", edit_chef_cookbook_path(@chef.id, @cookbook.id)  %>
+    </button>
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-6">
+<ul class="chefbook">
   <% @cookbook.recipes.each do |recipe| %>
     <li>
       <h3>
@@ -15,6 +22,8 @@
    
   <% end %>
 </ul>
+</div>
+</div>
 <form action="/chefs/<%= @chef.id %>/cookbooks/<%= @cookbook.id %>" method='post'>
   <%= token_tag %>
   <input type="hidden" name="_method" value="delete">
