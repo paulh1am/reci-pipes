@@ -1,4 +1,4 @@
-<img src="<%= @cookbook.cover_art_url %>"><br/>
+<img src="<%= @cookbook.cover_art_url %>" style="width:200px; height:200px"><br/>
 <button><%= link_to "New Recipe", new_chef_cookbook_recipe_path(@chef.id, @cookbook.id)  %></button>
 <button><%= link_to "Edit Book", edit_chef_cookbook_path(@chef.id, @cookbook.id)  %></button>
 <ul>
@@ -12,9 +12,7 @@
     <li>
      <%= recipe.ingredients %>
     </li>
-    <li>
-     <%= recipe.instructions %>
-    </li>
+   
   <% end %>
 </ul>
 <form action="/chefs/<%= @chef.id %>/cookbooks/<%= @cookbook.id %>" method='post'>

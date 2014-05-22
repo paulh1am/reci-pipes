@@ -41,7 +41,7 @@ def update
   @recipe = Recipe.find(params[:id])
   @cookbook = Cookbook.find(params[:cookbook_id])
   @recipe.update(recipe_params)
-  redirect_to chef_cookbook_recipes_path
+  redirect_to profiles_path
 end
 def destroy
   @chef = Chef.find(params[:chef_id])
@@ -53,7 +53,7 @@ def destroy
 
 private
 def recipe_params
-  params.require(:recipe).permit(:name, :instructions, :reci, :cookbook_id)
+  params.require(:recipe).permit(:name, :instructions, :ingredients, :cookbook_id, :img_url)
 end
 
 

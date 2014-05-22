@@ -1,12 +1,28 @@
-<ul class="nav">
-<li class="title"><a href="/">Reci-Pipes</a></li>
-
 <% if current_chef %>
 
-    Hi <a href="/profiles"><%= current_chef.name %></a>
-<li><%= link_to "Log-Out", log_out_path, method: :delete  %></li>
-<% else%>
-  <li><%= link_to "Log-In", log_in_path %></li>
-  <li><%= link_to "Sign-Up", new_chef_path %></li>
-<% end %>
+    <a href="/profiles"><h4><%= current_chef.name %></h4></a>
+    <div id="piping"><h4>  text 'pipe' + your recipe's name to 917-242-4245 to get it by txt! </h4></div>
+
+
+
+ <ul class="nav nav-pills pull-right">
+ 
+  <li class="active"><form action="/sessions" method='post'>
+  <%= token_tag %>
+  <input type="hidden" name="_method" value="delete">
+  <button class="btn btn-primary" type='submit'>Log Out</button>
+</form></li>
 </ul>
+<% else%>
+ <ul class="nav nav-pills pull-right"> 
+  <li class="title"><%= link_to "Log-In", log_in_path %></li>
+  <li class="title"><%= link_to "Sign-Up", new_chef_path %></li>
+  <li class="title">
+    
+
+  </li>
+
+
+
+<% end %>
+        </ul>

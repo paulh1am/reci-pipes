@@ -1,46 +1,72 @@
 body {
   background-image: url('/assets/board.jpg');
   background-size: cover;
-  background-repeat: none;
-  color: lightblue;
-  text-shadow: 2px 2px #FF0099;
-  font-size: 20px;
+  background-repeat: none;  
+
+}
+.jumbotron {
+  opacity: 0.8;  
+
+}
+.chefbook {
+  list-style: none;
+}
+.bk_img {
+  width:210;
+  height: 210;
+}
+
+.title {
   font-weight: bold;
-  font-family: impact;
+  text-shadow: 1px 1px white;
+}
+.title a:hover {
+  opacity:0.3;
+   color: blue ;
 
+}
+.btn-primary {
+  background-color: ;
+  opacity: 0.4;
+}
+h4 {
+  font-weight: bold;
 
+}
+#piping {
+  color: white;
+}
+.text-muted {
+  color: white;
+  
+}
+.header {
+  background-color: 
 }
 a:link {
-  color: black;
+ 
 }
 a:visited {
-  color: blue;
+
 
 }
-a:hover {
-  color: limegreen;
-}
-.nav li {
-  list-style-type: none;
-  display: inline-block; 
-}
-.nav .title {
-  margin-right: 75%;
-}
+
+
 /* show chef styles */
 #chef-recis {
   text-align: center;
-  border: 1px dashed blue;
+ 
 }
 #recis {
   margin: 0 auto;
   margin-top: 8px;
-  background-color: black;
+  background-color: tan;
   border: 1px solid lightyellow;
-  opacity: 0.5;
+  opacity: 0.9;
   padding: 12px;
   width: 65%;
   border-radius: 10px;
+  color: white;
 
 }
 

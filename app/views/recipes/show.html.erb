@@ -1,10 +1,14 @@
+<img src="<%= @recipe.img_url %>" alt="" style="width:200px; height:200px"></img>
 <h3><%= @recipe.name %></h3>
 <%= @recipe.ingredients %>
-<%= @recipe.instructions %>
-<br/>
+<hr>
+<p>
+<%= @recipe.instructions %></p>
+<hr>
 <button><a href="<%= edit_chef_cookbook_recipe_path %>">EDIT</a>
-<form action="/chefs/<%= @chef.id %>/cookbooks/<%= @cookbook.id %>/recipes/<%= @recipe.id %>" method='post'></button>
+</button><hr>
+<form action="/chefs/<%= @chef.id %>/cookbooks/<%= @cookbook.id %>/recipes/<%= @recipe.id %>" method='post'>
   <%= token_tag %>
   <input type="hidden" name="_method" value="delete">
-  <button type='submit'>Destroy</button>
+  <button type='submit'>Delete</button>
 </form>

@@ -1,26 +1,50 @@
+<h5>Chef <%= @chef.name %></h5>
 
 
-<div id="chef-recis" class="eleven columns offset-by-two">
-  <h2 class="chef-name">
-    <%= @chef.name %>
-  </h2>
-  <div class="reci_list">
-    <% @chef.recipes.each do |r| %>
-    <div id="recis">
-      <h3>
-        <%= r.name %>
-      </h3>
-      <h4>from the book:<%= r.cookbook.title %></h4>
-      <p>
-        <%= puts r.reci %>
-      </p>
-      <p>
-        <%= r.instructions %>
-      </p> 
-    </div>
-    <% end %>
-  </div>
+<div class="pro-head">
+
+
 </div>
-<!-- 
-<%= form_tag(chefs_path(@chef.id), method: "delete") %>
--->
+
+<!-- fix this links -->
+<button class="btn btn-default" type='submit'><%= link_to "New Cookbook", new_chef_cookbook_path(@chef), method: :get  %></button>
+
+
+
+<br/>
+<hr>
+  <% @chef.cookbooks.each do |book| %>
+  <div class="row">
+  <div class="col-lg-6">
+  <div class="bk_img"><img src="<%= book.cover_art_url %>" alt="" style="border-radius:50%"></div>
+  </div>
+
+  <div class="col-lg-6">
+  <ul class="chefbook">
+    
+    <li>
+      <a href="/chefs/<%= @chef.id %>/cookbooks/<%= book.id %>"><%= book.title %></a>
+      <ul>
+        <% book.recipes.each do |recipe| %>
+          <li>
+            <%= link_to recipe.name, chef_cookbook_recipe_path(@chef.id, book.id, recipe.id)  %>
+            
+          </li>
+          <% end %>
+        </ul>
+        
+        <%= link_to "Add Recipe", new_chef_cookbook_recipe_path(@chef.id, book.id), method: :get  %>
+    </li>
+   <!--  <li>
+    <div class='cover' style="display:block; height:200px; width:200px; background:url('<%= book.cover_art_url %>')">
+    </li> -->
+  <% end %>
+</ul>
+</div>
+</div>
+<!-- <form action="/chefs/<%= @chef.id %>"method='post'>
+  <%= token_tag %>
+  <input type="hidden" name="_method" value="delete">
+  <button type='submit'>Delete My Profile</button>
+</form> -->
+
