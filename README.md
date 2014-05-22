@@ -7,7 +7,7 @@ A user-friendly [website] that allows you to:
   -login and manage your recipes
   -retrieve a recipe via SMS
  
-![alt text](http://imgur.com/bCwXZ8e "Logo Title Text 1")
+![alt text](url("http://imgur.com/bCwXZ8e") "Logo Title Text 1")
 
 
 Under the hood
