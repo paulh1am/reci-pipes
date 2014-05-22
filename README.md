@@ -3,9 +3,9 @@ RECI-PIPES
 
 A user-friendly [website] that allows you to:
   
-  ..browse public cook-books created by users
-  ..login and manage your recipes
-  ..retrieve a recipe via SMS
+    *browse public cook-books created by users
+    *login and manage your recipes
+    *retrieve a recipe via SMS
  
 ![alt text](http://i.imgur.com/bCwXZ8e.jpg "Logo Title Text 1")
 
