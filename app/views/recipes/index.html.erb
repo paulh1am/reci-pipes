@@ -3,15 +3,15 @@ site recipes:
 <ul>
   <% @recipes.each do |recipe| %>
     <br/>
-  
-      
-     <h3><%= recipe.id %>:  <%= recipe.name %></h3>
-    
+
+
+    <h3><%= recipe.id %>:  <%= recipe.name %></h3>
+
     <li>
-     <%= recipe.ingredients %>
+      <%= recipe.ingredients %>
     </li>
     <li>
-     <%= recipe.instructions %>
+      <%= recipe.instructions %>
     </li>
   <% end %>
 </ul>

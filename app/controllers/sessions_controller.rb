@@ -15,11 +15,9 @@ class SessionsController < ApplicationController
     end
   end
 
-def destroy
-  session[:chef_id] = nil
-  redirect_to chefs_path, notice: "Logged Out"
-end
-
-
-
+  def destroy
+    session[:chef_id] = nil
+    redirect_to chefs_path, notice: "Logged Out"
   end
+
+end

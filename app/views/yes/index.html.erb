@@ -2,8 +2,8 @@
 
 
 <% @account.messages.list({:date_sent => "#{Date.today}"}).each do |message| %>
-<p>
-  <%= message.body %>
-</p>
+  <p>
+    <%= message.body %>
+  </p>
 
 <% end %>

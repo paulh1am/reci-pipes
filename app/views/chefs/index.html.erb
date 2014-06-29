@@ -1,30 +1,25 @@
+<div class="row marketing">
+
+  <div style="text-align:center"><img src="http://www.clipartbest.com/cliparts/dc8/zyK/dc8zyKRce.png" alt="" style="height:3em"></div>
+  <div class="col-lg-6">
+    <h4>Organize Your Recipes Online</h4>
+    <p>Reci-Pipe is committed to providing a simple, elegant online recipe collection</p>
 
 
+  </div>
+
+  <div class="col-lg-6">
+    <h4>Retrieve Your Recipes by SMS</h4>
+    <p>Don't Depend on the internet. Keep your computer out of the kitchen. Textual information is <em>suited</em> to a text platform.</p>
 
 
-      <div class="row marketing">
-
-        <div style="text-align:center"><img src="http://www.clipartbest.com/cliparts/dc8/zyK/dc8zyKRce.png" alt="" style="height:3em"></div>
-        <div class="col-lg-6">
-          <h4>Organize Your Recipes Online</h4>
-          <p>Reci-Pipe is committed to providing a simple, elegant online recipe collection</p>
-
-
-        </div>
-
-        <div class="col-lg-6">
-          <h4>Retrieve Your Recipes by SMS</h4>
-          <p>Don't Depend on the internet. Keep your computer out of the kitchen. Textual information is <em>suited</em> to a text platform.</p>
-
-
-        </div>
-<ul class="nav nav-pills">
-  <li><a>SELECTED USERS:</a></li>
-  <% @chefs.each do |chef| %>
-    <li>
-      <a href="/chefs/<%= chef.id %>"><%= chef.name %></a>
-    </li>
-  <% end %>
-</ul>
-
-  
+  </div>
+  <ul class="nav nav-pills">
+    <li><a>SELECTED USERS:</a></li>
+    <% @chefs.each do |chef| %>
+      <li>
+        <a href="/chefs/<%= chef.id %>"><%= chef.name %></a>
+      </li>
+    <% end %>
+  </ul>
+</div>

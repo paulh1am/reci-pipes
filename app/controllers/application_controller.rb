@@ -4,15 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 
-helper_method :current_chef #allows to use in views and other stuff too!
- 
-def current_chef
-  Chef.find(session[:chef_id]) if session[:chef_id]
+  helper_method :current_chef #allows to use in views and other stuff too!
 
-end
+  def current_chef
+    Chef.find(session[:chef_id]) if session[:chef_id]
+  end
 
-def authorize
-  redirect_to chefs_path if current_chef.nil?
-end
+  def authorize
+    redirect_to chefs_path if current_chef.nil?
+  end
 
 end

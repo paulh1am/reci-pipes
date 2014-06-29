@@ -1,14 +1,12 @@
 <h1>CookBooks</h1>
 
-
-
 <ul>
   <% @chef.cookbooks.each do |book| %>
     <li>
       <a href="/chefs/<%= @chef.id %>/cookbooks/<%= book.id %>"><%= book.title %></a>
-   
+
     </li>
-   <!--  <li>
+    <!--  <li>
     <div class='cover' style="display:block; height:200px; width:200px; background:url('<%= book.cover_art_url %>')">
     </li> -->
   <% end %>

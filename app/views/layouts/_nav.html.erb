@@ -1,28 +1,22 @@
 <% if current_chef %>
 
-    <a href="/profiles"><h4><%= current_chef.name %></h4></a>
-    <div id="piping"><h4>  text 'pipe' + your recipe's name to 917-242-4245 to get it by txt! </h4></div>
+  <a href="/profiles"><h4><%= current_chef.name %></h4></a>
+  <div id="piping"><h4>  text 'pipe' + your recipe's name to 917-242-4245 to get it by txt! </h4></div>
 
+  <ul class="nav nav-pills pull-right">
 
-
- <ul class="nav nav-pills pull-right">
- 
-  <li class="active"><form action="/sessions" method='post'>
-  <%= token_tag %>
-  <input type="hidden" name="_method" value="delete">
-  <button class="btn btn-primary" type='submit'>Log Out</button>
-</form></li>
-</ul>
+    <li class="active"><form action="/sessions" method='post'>
+      <%= token_tag %>
+      <input type="hidden" name="_method" value="delete">
+      <button class="btn btn-primary" type='submit'>Log Out</button>
+    </form></li>
+  </ul>
 <% else%>
- <ul class="nav nav-pills pull-right"> 
-  <li class="title"><%= link_to "Log-In", log_in_path %></li>
-  <li class="title"><%= link_to "Sign-Up", new_chef_path %></li>
-  <li class="title">
-    
+  <ul class="nav nav-pills pull-right">
+    <li class="title"><%= link_to "Log-In", log_in_path %></li>
+    <li class="title"><%= link_to "Sign-Up", new_chef_path %></li>
+    <li class="title">
 
-  </li>
-
-
-
+    </li>
+  </ul>
 <% end %>
-        </ul>

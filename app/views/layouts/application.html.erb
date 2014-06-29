@@ -1,66 +1,63 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-  <title>ReciPipeApp</title>
+    <title>ReciPipeApp</title>
 
 
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/assets/styles.css">
-  <!-- Custom styles for this template -->
-  <link href="jumbotron-narrow.css" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/assets/styles.css">
+    <!-- Custom styles for this template -->
+    <link href="jumbotron-narrow.css" rel="stylesheet">
 
-  <!-- Just for debugging purposes. Don't actually copy this line! -->
-  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
-    </head>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
 
-    <body>
+  <body>
 
-      <div class="container">
-        <div class="header">
-          <%= render "/layouts/nav" %>
-          <ul class="nav nav-pills pull-right">
-          </ul>
-          <a href="/"><h3 class="text-muted">Reci-Pipe</h3></a>
+    <div class="container">
+      <div class="header">
+        <%= render "/layouts/nav" %>
+        <ul class="nav nav-pills pull-right">
+        </ul>
+        <a href="/"><h3 class="text-muted">Reci-Pipe</h3></a>
+      </div>
+
+
+      <div class="jumbotron">
+        <div class='flash'>
+          <p>
+            <%= flash.now[:alert] %>
+          </p>
+          <p>
+            <%= flash.now[:notice] %>
+          </p>
         </div>
+        <!-- <h1>Jumbotron heading</h1> -->
 
-
-        <div class="jumbotron">
-          <div class='flash'>
-            <p>
-              <%= flash.now[:alert] %>
-            </p> 
-            <p>
-              <%= flash.now[:notice] %>
-            </p>
-          </div>
-          <!-- <h1>Jumbotron heading</h1> -->
-          
 
 
         <!-- <p class="lead">*#$$&*</p>
         <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
-      </div> -->
+        </div> -->
 
         <div class="content">
           <%= yield %>
-          </div>
+        </div>
       </div>
 
       <div class="footer">
@@ -74,4 +71,4 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
   </body>
-  </html>
+</html>
