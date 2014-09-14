@@ -36,4 +36,4 @@ if @msg.include?("pipe")
 
 
 
-[website]:http://reci-pipes.herokuapp.com/
+[website]:#
