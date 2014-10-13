@@ -1,3 +1,4 @@
+require 'date'
 class YesController < ApplicationController
   include Webhookable
 
@@ -6,105 +7,66 @@ class YesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
 
-def pipe
-  
-  require 'date'
+  def pipe
+    # There is no way you need all those instance variables!
+    # How many of those actually get back out to the view later?
+    # In addition, all of this should be separated into a class, so your action here
+    # can look like:
+    # def pipe
+    #   twilio_message = MyTwilioThingy.new
+    #   render_twiml twilio_message
+    # end
+    @account_sid = ENV.fetch('TWILIO_SID')
+    @auth_token = ENV.fetch('TWILIO_AUTH_TOKEN')
 
-@account_sid = ENV.fetch('TWILIO_SID')
-@auth_token = ENV.fetch('TWILIO_AUTH_TOKEN')
+    @client = Twilio::REST::Client.new(@account_sid, @auth_token)
+    @account = @client.account
+
+    # That phone number should be an environment variable, too.
+    @msg = @account.messages.list({:to => "9172424245"}).first.body.downcase
+    @sender = @account.messages.list({:to => "9172424245"}).first.from
+    @sender.delete!('+')
+    @sender[0] = ''
+    @chef = Chef.find_by(phone_number: @sender)
 
 
-# set up a client
-@client = Twilio::REST::Client.new(@account_sid, @auth_token)
-@account = @client.account 
+    return unless @chef # I like doing this when there is an early exit condition.
 
-#assign the incoming message to var
-@msg = @account.messages.list({:to => "9172424245"}).first.body.downcase
-#assign the sender to a var
-@sender = @account.messages.list({:to => "9172424245"}).first.from
-@sender.delete!('+')
-@sender[0] = ''
-#see if sender's number matches a chef in db
-@chef = Chef.find_by(phone_number: @sender)
+    @pipe = "crumbs"
 
+    if @msg.include?("pipe")
 
-#if chef exists read the message
-if @chef
-  @pipe = "crumbs"
-  
-  if @msg.include?("pipe")
-    
-    @matching_recipes = @chef.recipes.select{ |recipe| @msg.include?(recipe.name)}
+      @matching_recipes = @chef.recipes.select{ |recipe| @msg.include?(recipe.name)}
 
-      if @matching_recipes[0] != nil 
-       @pipe = @matching_recipes[0].ingredients
+      if @matching_recipes[0] != nil
+        @pipe = @matching_recipes[0].ingredients
       else
-      @pipe = "empty cupboard"
+        @pipe = "empty cupboard"
       end
 
-  end
-  response = Twilio::TwiML::Response.new do |r|
-    
-    r.Message "#{@pipe}"
     end
-
-    #render_twiml response 
-     render_twiml response
-else
-
-end
-
-
-
-# test      
-    # @str = "?"
-
-    # if @mesg.include?('yes')
-    #   @str = "NO"
-    # elsif @mesg.include?('no')
-    #   @str = "YES"
-    # elsif @mesg.include?('black')
-    #   @str = "White"
-    # elsif mesg.include?('white')
-    #   @str = "Black"
-    # else
-    #   @str = "what?"
-    # end
-      
-
-
-# response = Twilio::TwiML::Response.new do |r|
-    
-#     r.Message "#{@pipe}"
-#     end
-
-#     #render_twiml response
-#      render_twiml response
-end
+    twilio_response = Twilio::TwiML::Response.new do |r|
+      r.Message @pipe.to_s # Is the Twilio API actually using an upper-case letter? Wow.
+    end
+    render_twiml twilio_response
+  end
 
 
 
-    def sms
-      require 'date'
+  def sms
 
-@account_sid = ENV.fetch('TWILIO_SID')
+    # All this looks a lot like the logic in the above action. Again,
+    # Putting it into a separate class would help reducing the apparent complexity
+    # and keeping things more readable.
+    @account_sid = ENV.fetch('TWILIO_SID')
+    @auth_token = ENV.fetch('TWILIO_AUTH_TOKEN')
 
+    @client = Twilio::REST::Client.new(@account_sid, @auth_token)
+    @account = @client.account
 
-@auth_token = ENV.fetch('TWILIO_AUTH_TOKEN')
+    @mesg = @account.messages.list({:to => "7208975111"}).first.body.downcase
+    @sender = @account.messages.list[0].from
 
-
-# set up a client
-@client = Twilio::REST::Client.new(@account_sid, @auth_token)
-@account = @client.account 
-
-@mesg = @account.messages.list({:to => "7208975111"}).first.body.downcase
-@sender = @account.messages.list[0].from
-    
-
-
-
-
-# yes_sms test      
     @str = "?"
 
     if @mesg.include?('yes')
@@ -118,31 +80,20 @@ end
     else
       @str = "what?"
     end
-      
 
-
-response = Twilio::TwiML::Response.new do |r|
-      
-      # put the twilio do action here SMS? Exampl:
-      #r.Say 'Hey there.'
-    r.Message "#{@str}"
+    twilio_response = Twilio::TwiML::Response.new do |r|
+      r.Message @str.to_s
     end
 
-    #render_twiml response
-     render_twiml response
+    render_twiml twilio_response
   end
 
   def index
-  @account_sid = ENV.fetch('TWILIO_SID')
+    @account_sid = ENV.fetch('TWILIO_SID')
+    @auth_token = ENV.fetch('TWILIO_AUTH_TOKEN')
 
-
-@auth_token = ENV.fetch('TWILIO_AUTH_TOKEN')
-
-
-# set up a client
-@client = Twilio::REST::Client.new(@account_sid, @auth_token)
-@account = @client.account 
-
+    @client = Twilio::REST::Client.new(@account_sid, @auth_token)
+    @account = @client.account
   end
 
 end
